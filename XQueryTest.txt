@@ -1,0 +1,12 @@
+<result> { for $a in document("j_caesar.xml")//ACT
+ return  <scenes> {
+				for $b in $a//SCENE
+  					where empty (
+									for $sp in $b/SPEECH/SPEAKER where $sp/text() = "CASCA"
+									return $sp
+								)
+  					return $b/TITLE
+					}
+   		</scenes>
+}
+</result>
